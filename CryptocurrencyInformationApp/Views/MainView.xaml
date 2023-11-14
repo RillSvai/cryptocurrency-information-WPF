@@ -1,0 +1,49 @@
+﻿<Window x:Class="CryptocurrencyInformationApp.Views.MainView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CryptocurrencyInformationApp.Views"
+        xmlns:viewModel="clr-namespace:CryptocurrencyInformationApp.ViewModels.Main"
+        d:DataContext="{d:DesignInstance Type=viewModel:MainViewModel, IsDesignTimeCreatable=False}"
+        mc:Ignorable="d"
+        Title="Crypto world" Height="800" Width="1100"
+        WindowStartupLocation="CenterScreen"
+        AllowsTransparency="True"
+        Background="Transparent"
+        WindowStyle="None"
+        FontFamily="{DynamicResource plainTextFont}">
+       
+    <Border Background="{DynamicResource primaryBackGradient}"
+            BorderBrush="{DynamicResource borderGradient}"
+            BorderThickness="3.5"
+            CornerRadius="14">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0"
+                    Background="{DynamicResource secondaryBackGradient}"
+                    BorderBrush="{DynamicResource borderGradient}"
+                    CornerRadius="14,0,0,14">
+                
+                <StackPanel>
+                    <StackPanel Orientation="Vertical"
+                                Margin="15,25,0,20">
+                        <Image Source="/Assets/Icons/logo.png"
+                               Width="105"/>
+                        <TextBlock Text="Crypto World"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   FontSize="21"
+                                   Margin="0,10,0,0"
+                                   Foreground="{StaticResource titleColor1}"
+                                   FontFamily="{DynamicResource titleFont}"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Border>
+</Window>
