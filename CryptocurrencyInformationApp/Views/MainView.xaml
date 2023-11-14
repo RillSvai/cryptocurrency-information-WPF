@@ -5,13 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CryptocurrencyInformationApp.Views"
         xmlns:viewModel="clr-namespace:CryptocurrencyInformationApp.ViewModels.Main"
+        xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
         d:DataContext="{d:DesignInstance Type=viewModel:MainViewModel, IsDesignTimeCreatable=False}"
         mc:Ignorable="d"
         Title="Crypto world" Height="800" Width="1100"
         WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
         AllowsTransparency="True"
         Background="Transparent"
-        WindowStyle="None"
         FontFamily="{DynamicResource plainTextFont}">
        
     <Border Background="{DynamicResource primaryBackGradient}"
@@ -29,11 +30,18 @@
                     BorderBrush="{DynamicResource borderGradient}"
                     CornerRadius="14,0,0,14">
                 
-                <StackPanel>
+                <StackPanel Orientation="Vertical">
                     <StackPanel Orientation="Vertical"
                                 Margin="15,25,0,20">
-                        <Image Source="/Assets/Icons/logo.png"
-                               Width="105"/>
+                        <Border BorderBrush="{DynamicResource borderGradient}"
+                                BorderThickness="2.5"
+                                Width="90"
+                                CornerRadius="45">
+                            <Image Source="/Assets/Icons/logo.png" 
+                                        Width="85"
+                                        Name="logo"/>
+                        </Border>       
+                               
                         <TextBlock Text="Crypto World"
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Center"
@@ -42,6 +50,25 @@
                                    Foreground="{StaticResource titleColor1}"
                                    FontFamily="{DynamicResource titleFont}"/>
                     </StackPanel>
+                    
+                    <RadioButton Style="{StaticResource menuButton}"
+                                 Tag="{StaticResource color1}"
+                                 IsChecked="True"
+                                 FontFamily="{DynamicResource titleFont}">
+                        <StackPanel Orientation="Horizontal">
+                            <fa:IconImage Icon="Home" Style="{StaticResource menuButtonIcon}"/>
+                            <TextBlock Text="Home" Style="{StaticResource menuButtonText}"/>
+                        </StackPanel>
+                    </RadioButton>
+                    
+                    <RadioButton Style="{StaticResource menuButton}"
+                                 Tag="{StaticResource color2}"
+                                 FontFamily="{DynamicResource titleFont}">
+                        <StackPanel Orientation="Horizontal">
+                            <fa:IconImage Icon="Home" Style="{StaticResource menuButtonIcon}"/>
+                            <TextBlock Text="Home" Style="{StaticResource menuButtonText}"/>
+                        </StackPanel>
+                    </RadioButton>
                 </StackPanel>
             </Border>
         </Grid>

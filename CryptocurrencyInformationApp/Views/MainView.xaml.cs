@@ -22,6 +22,8 @@ namespace CryptocurrencyInformationApp.Views
         public MainView()
         {
             InitializeComponent();
+            //App.Current.Resources.MergedDictionaries[0] = new ResourceDictionary () { Source = new Uri("/Styles/BlueTheme.xaml", UriKind.Relative)};
+            //App.Current.Resources.MergedDictionaries[1] = new ResourceDictionary() { Source = new Uri("/Styles/GothicFonts.xaml", UriKind.Relative)};
         }
     }
 }

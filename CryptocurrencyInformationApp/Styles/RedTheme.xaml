@@ -13,4 +13,6 @@
         <GradientStop Color="#2C0000" Offset="0"/>
         <GradientStop Color="#330000" Offset="0.50"/>
     </LinearGradientBrush>
+    <SolidColorBrush x:Key="panelOverColor" Color="#3D0000"/>
+    <SolidColorBrush x:Key="panelActiveColor" Color="#4E0000"/>
 </ResourceDictionary>
