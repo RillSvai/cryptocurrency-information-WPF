@@ -10,7 +10,6 @@ namespace CryptocurrencyInformationApp.ViewModels.Main
         private string _caption;
         private IconChar _icon;
         private readonly HomeViewModel _homeViewModel;
-        private readonly StatisticViewModel _statisticViewModel;
         private readonly ConverterViewModel _converterViewModel;
         private readonly SettingsViewModel _settingsViewModel;
         private readonly HistoryViewModel _historyViewModel;
@@ -49,19 +48,16 @@ namespace CryptocurrencyInformationApp.ViewModels.Main
         public ICommand ShowHistoryViewCommand {  get; }
         public ICommand ShowSettingsViewCommand {  get; }
         public MainViewModel
-            (HomeViewModel homeViewModel, StatisticViewModel statisticViewModel,
-            ConverterViewModel converterViewModel, SettingsViewModel settingsViewModel,
-            HistoryViewModel historyViewModel)
+            (HomeViewModel homeViewModel,ConverterViewModel converterViewModel,
+            SettingsViewModel settingsViewModel, HistoryViewModel historyViewModel)
         {
             _homeViewModel = homeViewModel;
-            _statisticViewModel = statisticViewModel;
             _converterViewModel = converterViewModel;
             _settingsViewModel = settingsViewModel;
             _historyViewModel = historyViewModel;
             ShowHomeViewCommand = new ViewModelCommand(ExecuteShowHomeViewCommand);
             ShowSettingsViewCommand = new ViewModelCommand(ExecuteShowSettingsViewCommand);
             ShowConverterViewCommand = new ViewModelCommand(ExecuteShowConverterViewCommand);
-            ShowStatisticViewCommand = new ViewModelCommand(ExecuteShowStatisticViewCommand);
             ShowHistoryViewCommand = new ViewModelCommand(ExecuteShowHistoryViewCommand);
             ExecuteShowHomeViewCommand(null);
         }
@@ -72,14 +68,6 @@ namespace CryptocurrencyInformationApp.ViewModels.Main
             Caption = "History";
             CurrentChild = _historyViewModel;
         }
-
-        private void ExecuteShowStatisticViewCommand(object obj)
-        {
-            Icon = IconChar.ChartSimple;
-            Caption = "Statistic";
-            CurrentChild = _statisticViewModel;
-        }
-
 
         private void ExecuteShowConverterViewCommand(object obj)
         {

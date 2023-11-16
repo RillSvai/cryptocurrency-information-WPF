@@ -1,7 +1,10 @@
-﻿using CryptocurrencyInformationApp.ViewModels.Main;
+﻿using CryptocurrencyInformationApp.Data;
+using CryptocurrencyInformationApp.Utility;
+using CryptocurrencyInformationApp.ViewModels.Main;
 using CryptocurrencyInformationApp.Views;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
 using System.Windows;
 
 namespace CryptocurrencyInformationApp
@@ -19,19 +22,23 @@ namespace CryptocurrencyInformationApp
                     services.AddSingleton<MainView>();
                     services.AddSingleton<MainViewModel>();
                     services.AddSingleton<HomeViewModel>();
-                    services.AddSingleton<StatisticViewModel>();
                     services.AddSingleton<ConverterViewModel>();
                     services.AddSingleton<SettingsViewModel>();
                     services.AddSingleton<HistoryViewModel>();
                     services.AddSingleton<DetailsViewModel>();
+                    services.AddHttpClient("coin-cap-api", httpClient => 
+                    {
+                        httpClient.BaseAddress = new Uri("https://api.coincap.io/v2/");
+                    });
                 }).Build();
         }
         protected override async void OnStartup(StartupEventArgs e)
         {
             await AppHost!.StartAsync();
+            await AppHost.SeedData();
             MainView mainView = AppHost!.Services.GetRequiredService<MainView>();
             mainView.Show();
-            base.OnStartup(e);
+            base.OnStartup(e);     
         }
 
         protected override async void OnExit(ExitEventArgs e)
