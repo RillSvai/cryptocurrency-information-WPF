@@ -1,4 +1,5 @@
-﻿using CryptocurrencyInformationApp.Data;
+﻿using AutoMapper;
+using CryptocurrencyInformationApp.Data;
 using CryptocurrencyInformationApp.Models;
 using CryptocurrencyInformationApp.Utility.Services.Abstractions;
 using System;
@@ -17,9 +18,11 @@ namespace CryptocurrencyInformationApp.ViewModels.Main
         private int _rowsCount;
         private string _searchFilte;
         private List<string> _searchOptions;
-        private List<Asset> _assets;
-        private IEnumerable<Asset> _assetsRepresantion;
+        private List<DataGridAsset> _assets;
+        private IEnumerable<DataGridAsset> _assetsRepresantion;
         private readonly INumberValidator _numberValidator;
+        private readonly IMapper _mapper;
+        private DataGridAsset _selectedAsset;
         public string RowsLimit 
         {
             get => _rowsLimit;
@@ -43,7 +46,7 @@ namespace CryptocurrencyInformationApp.ViewModels.Main
                 OnPropertyChanged(nameof(RowsCount));
             }
         }
-        public IEnumerable<Asset> AssetsRepresantion
+        public IEnumerable<DataGridAsset> AssetsRepresantion
         {
             get => _assetsRepresantion;
             set 
@@ -52,12 +55,22 @@ namespace CryptocurrencyInformationApp.ViewModels.Main
                 OnPropertyChanged(nameof(AssetsRepresantion));
             }
         }
-        public ICommand ShowDetailsViewCommand { get; }
-        public HomeViewModel(INumberValidator numberValidator)
+        public DataGridAsset SelectedAsset 
         {
+            get => _selectedAsset;
+            set 
+            {
+                _selectedAsset = value;
+                OnPropertyChanged(nameof(SelectedAsset));
+            }
+        }
+        public ICommand ShowDetailsViewCommand { get; }
+        public HomeViewModel(INumberValidator numberValidator, IMapper mapper)
+        {
+            _mapper = mapper;
             _numberValidator = numberValidator;
-            _assets = Storage.Assets;
-            AssetsRepresantion = Storage.Assets;
+            _assets = _mapper.Map<List<DataGridAsset>>(Storage.Assets);
+            AssetsRepresantion = _mapper.Map<IEnumerable<DataGridAsset>>(Storage.Assets);
             RowsLimit = _assets.Count.ToString();
             RowsCount = _assets.Count;
             ShowDetailsViewCommand = new ViewModelCommand(ExecuteShowDetailsViewCommand);
@@ -65,11 +78,7 @@ namespace CryptocurrencyInformationApp.ViewModels.Main
 
         private void ExecuteShowDetailsViewCommand(object obj)
         {
-            if (obj is Asset asset) 
-            {
-
-            }
-            MessageBox.Show(obj.ToString());
+            MessageBox.Show(SelectedAsset.Name);
         }
 
         private bool IsRowsLimitChangeAllowed(string value) 

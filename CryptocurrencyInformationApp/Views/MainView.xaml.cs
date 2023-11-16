@@ -12,6 +12,7 @@ namespace CryptocurrencyInformationApp.Views
         public MainView(MainViewModel mainViewModel)
         {
             InitializeComponent();
+            //App.Current.Resources.MergedDictionaries[0] = new ResourceDictionary() { Source=new Uri("/Styles/BlueTheme.xaml",UriKind.Relative)};
             DataContext = mainViewModel;
             MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
         }

@@ -1,4 +1,5 @@
-﻿using CryptocurrencyInformationApp.Data;
+﻿using AutoMapper;
+using CryptocurrencyInformationApp.Data;
 using CryptocurrencyInformationApp.Utility;
 using CryptocurrencyInformationApp.Utility.Services.Abstractions;
 using CryptocurrencyInformationApp.Utility.Services.Implementations;
@@ -29,6 +30,7 @@ namespace CryptocurrencyInformationApp
                     services.AddSingleton<SettingsViewModel>();
                     services.AddSingleton<HistoryViewModel>();
                     services.AddSingleton<DetailsViewModel>();
+                    services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
                     //API
                     services.AddHttpClient("coin-cap-api", httpClient => 
                     {
