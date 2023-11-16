@@ -14,7 +14,25 @@
         AllowsTransparency="True"
         Background="Transparent"
         FontFamily="{DynamicResource plainTextFont}">
-       
+
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">
+            <local:HomeView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:StatisticViewModel}">
+            <local:StatisticView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:ConverterViewModel}">
+            <local:ConverterView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:SettingsViewModel}">
+            <local:SettingsView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:HistoryViewModel}">
+            <local:HistoryView/>
+        </DataTemplate>
+    </Window.Resources>
+    
     <Border Background="{DynamicResource primaryBackGradient}"
             BorderBrush="{DynamicResource borderGradient}"
             BorderThickness="3.5"
@@ -24,12 +42,12 @@
                 <ColumnDefinition Width="250"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-
+            <!--Sidebar-->
             <Border Grid.Column="0"
                     Background="{DynamicResource secondaryBackGradient}"
                     BorderBrush="{DynamicResource borderGradient}"
                     CornerRadius="14,0,0,14">
-                
+
                 <StackPanel Orientation="Vertical">
                     <StackPanel Orientation="Vertical"
                                 Margin="15,25,0,20">
@@ -40,8 +58,8 @@
                             <Image Source="/Assets/Icons/logo.png" 
                                         Width="85"
                                         Name="logo"/>
-                        </Border>       
-                               
+                        </Border>
+
                         <TextBlock Text="Crypto World"
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Center"
@@ -50,27 +68,122 @@
                                    Foreground="{StaticResource titleColor1}"
                                    FontFamily="{DynamicResource titleFont}"/>
                     </StackPanel>
-                    
+
                     <RadioButton Style="{StaticResource menuButton}"
                                  Tag="{StaticResource color1}"
                                  IsChecked="True"
-                                 FontFamily="{DynamicResource titleFont}">
+                                 FontFamily="{DynamicResource titleFont}"
+                                 Command="{Binding ShowHomeViewCommand}">
                         <StackPanel Orientation="Horizontal">
                             <fa:IconImage Icon="Home" Style="{StaticResource menuButtonIcon}"/>
                             <TextBlock Text="Home" Style="{StaticResource menuButtonText}"/>
                         </StackPanel>
                     </RadioButton>
-                    
+
                     <RadioButton Style="{StaticResource menuButton}"
                                  Tag="{StaticResource color2}"
-                                 FontFamily="{DynamicResource titleFont}">
+                                 FontFamily="{DynamicResource titleFont}"
+                                 Command="{Binding ShowStatisticViewCommand}">
                         <StackPanel Orientation="Horizontal">
-                            <fa:IconImage Icon="Home" Style="{StaticResource menuButtonIcon}"/>
-                            <TextBlock Text="Home" Style="{StaticResource menuButtonText}"/>
+                            <fa:IconImage Icon="ChartSimple" Style="{StaticResource menuButtonIcon}"/>
+                            <TextBlock Text="Statistic" Style="{StaticResource menuButtonText}"/>
+                        </StackPanel>
+                    </RadioButton>
+
+                    <RadioButton Style="{StaticResource menuButton}"
+                                 Tag="{StaticResource color3}"
+                                 FontFamily="{DynamicResource titleFont}"
+                                 Command="{Binding ShowConverterViewCommand}">
+                        <StackPanel Orientation="Horizontal">
+                            <fa:IconImage Icon="ArrowRightArrowLeft" Style="{StaticResource menuButtonIcon}"/>
+                            <TextBlock Text="Converter" Style="{StaticResource menuButtonText}"/>
+                        </StackPanel>
+                    </RadioButton>
+
+                    <RadioButton Style="{StaticResource menuButton}"
+                                 Tag="{StaticResource color4}"
+                                 FontFamily="{DynamicResource titleFont}"
+                                 Command="{Binding ShowHistoryViewCommand}">
+                        <StackPanel Orientation="Horizontal">
+                            <fa:IconImage Icon="Book" Style="{StaticResource menuButtonIcon}"/>
+                            <TextBlock Text="History" Style="{StaticResource menuButtonText}"/>
+                        </StackPanel>
+                    </RadioButton>
+
+                    <RadioButton Style="{StaticResource menuButton}"
+                                 Tag="{StaticResource color5}"
+                                 FontFamily="{DynamicResource titleFont}"
+                                 Command="{Binding ShowSettingsViewCommand}">
+                        <StackPanel Orientation="Horizontal">
+                            <fa:IconImage Icon="Gears" Style="{StaticResource menuButtonIcon}"/>
+                            <TextBlock Text="Settings" Style="{StaticResource menuButtonText}"/>
                         </StackPanel>
                     </RadioButton>
                 </StackPanel>
             </Border>
+            <!--Main-->
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0"
+                            Background="Transparent"
+                            FlowDirection="RightToLeft"
+                            Orientation="Horizontal"
+                            x:Name="controlBar"
+                            Margin="0,0,5,0"
+                            MouseEnter="controlBar_MouseEnter"
+                            MouseDown="controlBar_MouseDown">
+                    <Button Style="{StaticResource controlButton}"
+                            Tag="{StaticResource color1}"
+                            x:Name="closeButton"
+                            Click="closeButton_Click">
+                        <fa:IconImage Icon="Xmark" Style="{StaticResource controlButtonIcon}"/>
+                    </Button>
+                    <Button Style="{StaticResource controlButton}"
+                            Tag="{StaticResource color2}"
+                            Name="maximizeButton"
+                            Click="maximizeButton_Click">
+                        <fa:IconImage Icon="WindowMaximize" Style="{StaticResource controlButtonIcon}"/>
+                    </Button>
+                    <Button Style="{StaticResource controlButton}"
+                            Tag="{StaticResource color3}"
+                            Name="minimizeButton"
+                            Click="minimizeButton_Click">
+                        <fa:IconImage Icon="WindowMinimize" Height="13" Width="13" Style="{StaticResource controlButtonIcon}"/>
+                    </Button>
+                </StackPanel>
+
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0"
+                                Orientation="Horizontal"
+                                VerticalAlignment="Center">
+                        <fa:IconImage Icon="{Binding Icon, UpdateSourceTrigger=PropertyChanged}"
+                                      Height="26"
+                                      Width="26"
+                                      Foreground="White"
+                                      Margin="35,0,13,0"/>
+
+                        <TextBlock Text="{Binding Caption, UpdateSourceTrigger=PropertyChanged}"
+                                   FontSize="16"
+                                   Foreground="White"
+                                   FontFamily="{DynamicResource titleFont}"
+                                   VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Grid>
+
+                <ContentControl Grid.Row="2"
+                                Margin="25">
+                </ContentControl>
+            </Grid>
         </Grid>
     </Border>
 </Window>

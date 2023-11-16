@@ -18,10 +18,11 @@
 
   <ItemGroup>
     <Folder Include="Models\" />
+    <Folder Include="Data\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Assets\Icons\logo.png"/>
+    <Resource Include="Assets\Icons\logo.png" />
   </ItemGroup>
 
 </Project>

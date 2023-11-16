@@ -9,7 +9,7 @@ namespace CryptocurrencyInformationApp
 
     public partial class App : Application
     {
-        public static IHost? AppHost {  get; set; }
+        public static IHost? AppHost { get; set; }
 
         public App()
         {
@@ -18,6 +18,12 @@ namespace CryptocurrencyInformationApp
                 {
                     services.AddSingleton<MainView>();
                     services.AddSingleton<MainViewModel>();
+                    services.AddSingleton<HomeViewModel>();
+                    services.AddSingleton<StatisticViewModel>();
+                    services.AddSingleton<ConverterViewModel>();
+                    services.AddSingleton<SettingsViewModel>();
+                    services.AddSingleton<HistoryViewModel>();
+                    services.AddSingleton<DetailsViewModel>();
                 }).Build();
         }
         protected override async void OnStartup(StartupEventArgs e)
