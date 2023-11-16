@@ -1,4 +1,6 @@
-﻿using System.Windows.Controls;
+﻿using CryptocurrencyInformationApp.ViewModels.Main;
+using System.Text.RegularExpressions;
+using System.Windows.Controls;
 
 namespace CryptocurrencyInformationApp.Views
 {

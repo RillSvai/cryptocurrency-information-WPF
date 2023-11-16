@@ -67,7 +67,7 @@
                     </StackPanel>
 
                     <RadioButton Style="{StaticResource menuButton}"
-                                 Tag="{StaticResource color1}"
+                                 Tag="{StaticResource color2}"
                                  IsChecked="True"
                                  FontFamily="{DynamicResource titleFont}"
                                  Command="{Binding ShowHomeViewCommand}">
@@ -88,7 +88,7 @@
                     </RadioButton>
 
                     <RadioButton Style="{StaticResource menuButton}"
-                                 Tag="{StaticResource color4}"
+                                 Tag="{StaticResource color1}"
                                  FontFamily="{DynamicResource titleFont}"
                                  Command="{Binding ShowHistoryViewCommand}">
                         <StackPanel Orientation="Horizontal">
@@ -168,7 +168,8 @@
                 </Grid>
 
                 <ContentControl Grid.Row="2"
-                                Margin="25">
+                                Margin="25"
+                                Content="{Binding CurrentChild}">
                 </ContentControl>
             </Grid>
         </Grid>
