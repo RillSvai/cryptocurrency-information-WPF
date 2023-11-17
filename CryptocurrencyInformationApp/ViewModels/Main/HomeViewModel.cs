@@ -4,6 +4,7 @@ using CryptocurrencyInformationApp.Models;
 using CryptocurrencyInformationApp.Utility;
 using CryptocurrencyInformationApp.Utility.Services.Abstractions;
 using MaterialDesignColors;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -25,6 +26,8 @@ namespace CryptocurrencyInformationApp.ViewModels.Main
         private readonly INumberValidator _numberValidator;
         private readonly IMapper _mapper;
         private DataGridAsset _selectedAsset;
+        private readonly DetailsViewModel _detailsViewModel;
+        private readonly IServiceProvider _serviceProvider;
         public string RowsLimit
         {
             get => _rowsLimit;
@@ -90,10 +93,13 @@ namespace CryptocurrencyInformationApp.ViewModels.Main
             }
         }
         public ICommand ShowDetailsViewCommand { get; }
-        public HomeViewModel(INumberValidator numberValidator, IMapper mapper)
+        public HomeViewModel(INumberValidator numberValidator, IMapper mapper,
+            DetailsViewModel detailsViewModel, IServiceProvider serviceProvider)
         {
             _mapper = mapper;
             _numberValidator = numberValidator;
+            _detailsViewModel = detailsViewModel;
+            _serviceProvider = serviceProvider;
             SelectedFilterOption = "Search by name";
             _assets = _mapper.Map<List<DataGridAsset>>(Storage.Assets);
             AssetsRepresantion = _mapper.Map<IEnumerable<DataGridAsset>>(Storage.Assets);
@@ -104,7 +110,10 @@ namespace CryptocurrencyInformationApp.ViewModels.Main
 
         private void ExecuteShowDetailsViewCommand(object obj)
         {
-            MessageBox.Show(SelectedAsset.Name);
+            MainViewModel mainViewModel = _serviceProvider.GetRequiredService<MainViewModel>();
+            _detailsViewModel.AssetId = SelectedAsset.Id;
+            mainViewModel.Caption += $"Home/Details/{SelectedAsset.Id}";
+            mainViewModel.CurrentChild = _detailsViewModel;    
         }
 
         private bool IsRowsLimitChangeAllowed(string value)

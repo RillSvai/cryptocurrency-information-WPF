@@ -8,6 +8,18 @@ namespace CryptocurrencyInformationApp.ViewModels.Main
 {
     public class DetailsViewModel : ViewModelBase
     {
+        private string _assetId;
+        private readonly IServiceProvider _serviceProvider;
+
+        public string AssetId 
+        {
+            get => _assetId;
+            set => _assetId = value;
+        }
+        public DetailsViewModel(IServiceProvider serviceProvider)
+        {
+            _serviceProvider = serviceProvider;
+        }
 
     }
 }
