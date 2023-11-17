@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using CryptocurrencyInformationApp.Data;
 using CryptocurrencyInformationApp.Models;
+using CryptocurrencyInformationApp.Utility;
 using CryptocurrencyInformationApp.Utility.Services.Abstractions;
+using MaterialDesignColors;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -16,49 +18,72 @@ namespace CryptocurrencyInformationApp.ViewModels.Main
     {
         private string _rowsLimit;
         private int _rowsCount;
-        private string _searchFilte;
-        private List<string> _searchOptions;
+        private string _selectedFilterOption;
+        private string _searchFilter;
         private List<DataGridAsset> _assets;
         private IEnumerable<DataGridAsset> _assetsRepresantion;
         private readonly INumberValidator _numberValidator;
         private readonly IMapper _mapper;
         private DataGridAsset _selectedAsset;
-        public string RowsLimit 
+        public string RowsLimit
         {
             get => _rowsLimit;
-            set 
+            set
             {
-                if (IsRowsLimitChangeAllowed(value)) 
-                { 
+                if (IsRowsLimitChangeAllowed(value))
+                {
                     _rowsLimit = value;
                     OnPropertyChanged(nameof(RowsLimit));
-                    OnRowsLimitChanged();
+                    OnOptionsChanged();
                 }
-                
+
             }
         }
-        public int RowsCount 
+        public int RowsCount
         {
             get => _rowsCount;
-            set 
+            set
             {
                 _rowsCount = value;
                 OnPropertyChanged(nameof(RowsCount));
             }
         }
+        public string SelectedFilterOption
+        {
+            get => _selectedFilterOption;
+            set
+            {
+                if (!string.IsNullOrEmpty(_selectedFilterOption) && _selectedFilterOption != value) 
+                {
+                    SearchFilter = "";
+                }
+                _selectedFilterOption = value;
+                
+            }
+        }
+        public string SearchFilter
+        {
+            get => _searchFilter;
+            set
+            {
+                _searchFilter = value;
+                OnPropertyChanged(nameof(SearchFilter));
+                OnOptionsChanged();
+            }
+        }
         public IEnumerable<DataGridAsset> AssetsRepresantion
         {
             get => _assetsRepresantion;
-            set 
+            set
             {
                 _assetsRepresantion = value;
                 OnPropertyChanged(nameof(AssetsRepresantion));
             }
         }
-        public DataGridAsset SelectedAsset 
+        public DataGridAsset SelectedAsset
         {
             get => _selectedAsset;
-            set 
+            set
             {
                 _selectedAsset = value;
                 OnPropertyChanged(nameof(SelectedAsset));
@@ -69,6 +94,7 @@ namespace CryptocurrencyInformationApp.ViewModels.Main
         {
             _mapper = mapper;
             _numberValidator = numberValidator;
+            SelectedFilterOption = "Search by name";
             _assets = _mapper.Map<List<DataGridAsset>>(Storage.Assets);
             AssetsRepresantion = _mapper.Map<IEnumerable<DataGridAsset>>(Storage.Assets);
             RowsLimit = _assets.Count.ToString();
@@ -81,12 +107,12 @@ namespace CryptocurrencyInformationApp.ViewModels.Main
             MessageBox.Show(SelectedAsset.Name);
         }
 
-        private bool IsRowsLimitChangeAllowed(string value) 
+        private bool IsRowsLimitChangeAllowed(string value)
         {
-            if (string.IsNullOrWhiteSpace(value)) 
+            if (string.IsNullOrWhiteSpace(value))
             {
                 return true;
-            }   
+            }
             bool isInt = int.TryParse(value, out int num);
             if (!isInt || !_numberValidator.IsInRange(num, 1, _assets.Count))
             {
@@ -94,11 +120,20 @@ namespace CryptocurrencyInformationApp.ViewModels.Main
             }
             return true;
         }
-        private void OnRowsLimitChanged() 
+        private void OnOptionsChanged()
         {
-            int num = string.IsNullOrEmpty(RowsLimit?.Trim()) ? 0 : int.Parse(RowsLimit);
-            AssetsRepresantion = _assets.Take(num);
+            string? filterStr = SearchFilter?.Replace(" ", "")?.ToLower();
+
+            Func<DataGridAsset, bool> filter = string.IsNullOrEmpty(filterStr) ? (_) => true : (dga => (typeof(DataGridAsset)
+                                    .GetProperty(SelectedFilterOption.GetLastWord().ToCapital())
+                                    ?.GetValue(dga)?.ToString() ?? "")
+                                    .Replace(" ", "").ToLower()
+                                    .Contains(filterStr!));
+
+            int num = string.IsNullOrEmpty(RowsLimit.Trim()) ? 0 : int.Parse(RowsLimit);
+            AssetsRepresantion = _assets.Where(filter).Take(num);
             RowsCount = AssetsRepresantion.Count();
         }
+
     }
 }

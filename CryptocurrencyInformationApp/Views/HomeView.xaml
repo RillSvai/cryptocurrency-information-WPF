@@ -41,12 +41,20 @@
                      FontFamily="{DynamicResource titleFont}"
                      VerticalAlignment="Center"
                      Height="35"
-                     Grid.Column="2"/>
+                     Grid.Column="2"
+                     Text="{Binding SearchFilter, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
             <ComboBox Style="{DynamicResource MaterialDesignOutlinedComboBox}"
                       Background="{DynamicResource panelOverColor}"
                       Grid.Column="4"
+                      Padding="20,0,0,0"
+                      Height="35"
+                      FontSize="16"
+                      Foreground="{StaticResource titleColor1}"
+                      FontFamily="{DynamicResource titleFont}"
+                      SelectedValue="{Binding SelectedFilterOption, Mode=OneWayToSource}"
                       Margin="4,0,0,0">
-                
+                <ComboBoxItem IsSelected="True" Content="Search by name"/>
+                <ComboBoxItem Content="Search by rank"/>
             </ComboBox>
         </Grid>
         <StackPanel Grid.Row="1"
