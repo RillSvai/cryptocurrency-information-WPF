@@ -30,6 +30,8 @@ namespace CryptocurrencyInformationApp
                     services.AddSingleton<SettingsViewModel>();
                     services.AddSingleton<HistoryViewModel>();
                     services.AddSingleton<DetailsViewModel>();
+                    services.AddSingleton<PriceHistoryViewModel>();
+                    services.AddSingleton<CheapestPricesViewModel>();
                     services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
                     //API
                     services.AddHttpClient("coin-cap-api", httpClient => 

@@ -44,7 +44,6 @@ namespace CryptocurrencyInformationApp.ViewModels.Main
             }
         }
         public ICommand ShowHomeViewCommand { get; }
-        public ICommand ShowStatisticViewCommand {  get; }
         public ICommand ShowConverterViewCommand {  get; }
         public ICommand ShowHistoryViewCommand {  get; }
         public ICommand ShowSettingsViewCommand {  get; }
@@ -66,28 +65,28 @@ namespace CryptocurrencyInformationApp.ViewModels.Main
         private void ExecuteShowHistoryViewCommand(object obj)
         {
             Icon = IconChar.Book;
-            Caption = "History";
+            Caption = "history";
             CurrentChild = _historyViewModel;
         }
 
         private void ExecuteShowConverterViewCommand(object obj)
         {
             Icon = IconChar.ArrowRightArrowLeft;
-            Caption = "Converter";
+            Caption = "converter";
             CurrentChild = _converterViewModel;
         }
 
         private void ExecuteShowSettingsViewCommand(object obj)
         {
             Icon = IconChar.Gears;
-            Caption = "Settings";
+            Caption = "settings";
             CurrentChild = _settingsViewModel;
         }
 
         private void ExecuteShowHomeViewCommand(object? obj)
         {
             Icon = IconChar.Home;
-            Caption= "Home";
+            Caption= "home";
             CurrentChild = _homeViewModel;
         }
     }

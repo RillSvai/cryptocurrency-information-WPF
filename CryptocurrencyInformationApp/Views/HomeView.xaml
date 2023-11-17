@@ -88,8 +88,8 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Rank" Width="100" Binding="{Binding Rank}"/>
                 <DataGridTextColumn Header="Name" Width="*" Binding="{Binding Name}"/>
-                <DataGridTextColumn Header="Price" Width="*" Binding="{Binding PriceUsd}"/>
-                <DataGridHyperlinkColumn Header="Explorer" Width="*" 
+                <DataGridTextColumn Header="Price" Width="*" Binding="{Binding PriceUsd, StringFormat={}{0:C6}}"/>
+                <DataGridHyperlinkColumn Header="More info" Width="*" 
                                          Binding="{Binding Explorer}">
                     <DataGridHyperlinkColumn.ElementStyle>
                         <Style>

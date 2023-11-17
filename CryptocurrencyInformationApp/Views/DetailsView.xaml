@@ -3,10 +3,193 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:viewModel="clr-namespace:CryptocurrencyInformationApp.ViewModels.Main"
+             d:DataContext="{d:DesignInstance Type=viewModel:DetailsViewModel, IsDesignTimeCreatable=False}"
              xmlns:local="clr-namespace:CryptocurrencyInformationApp.Views"
+             xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal">
+            <Button Style="{StaticResource navigationButton}"
+                    Tag = "{StaticResource color4}"
+                    Command="{Binding BackCommand}">
+                <StackPanel Orientation="Horizontal">
+                    <fa:IconImage Icon="AngleLeft" Style="{StaticResource navigationButtonIcon}"/>
+                    <TextBlock Style="{StaticResource navigationButtonText}"
+                               Text="Back"
+                               Width="60"/>
+                </StackPanel>
+            </Button>
             
+        </StackPanel>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Name:"
+                       Style="{StaticResource detailsHeader}"
+                       Grid.Column="0"/>
+            
+            <TextBlock Text="{Binding Asset.Name}"
+                       Style="{StaticResource detailsValue}"
+                       Grid.Column="1"/>
+        </Grid>
+        
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Price:"
+               Style="{StaticResource detailsHeader}"
+               Grid.Column="0"/>
+
+            <TextBlock Text="{Binding Asset.PriceUsd, StringFormat={}{0:C6}}"
+               Style="{StaticResource detailsValue}"
+               Grid.Column="1"/>
+        </Grid>
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Supply on markets:"
+               Style="{StaticResource detailsHeader}"
+               Grid.Column="0"/>
+
+            <TextBlock Text="{Binding Asset.Supply, StringFormat={}{0:F6}}"
+               Style="{StaticResource detailsValue}"
+               Grid.Column="1"/>
+        </Grid>
+        <Grid Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Max supply (optional):"
+               Style="{StaticResource detailsHeader}"
+               Grid.Column="0"/>
+
+            <TextBlock Text="{Binding Asset.MaxSupply, StringFormat={}{0:F6}}"
+               Style="{StaticResource detailsValue}"
+               Grid.Column="1"/>
+        </Grid>
+        <Grid Grid.Row="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Market cap in USD:"
+               Style="{StaticResource detailsHeader}"
+               Grid.Column="0"/>
+
+            <TextBlock Text="{Binding Asset.MarketCapUsd, StringFormat={}{0:C6}}"
+               Style="{StaticResource detailsValue}"
+               Grid.Column="1"/>
+        </Grid>
+
+        <Grid Grid.Row="6">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Used volume in USD (24h):"
+                Style="{StaticResource detailsHeader}"
+                Grid.Column="0"/>
+
+            <TextBlock Text="{Binding Asset.VolumeUsd24Hr, StringFormat={}{0:C6}}"
+                Style="{StaticResource detailsValue}"
+                Grid.Column="1"/>
+        </Grid>
+
+        <Grid Grid.Row="7">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Symbol:"
+                       Style="{StaticResource detailsHeader}"
+                       Grid.Column="0"/>
+
+            <TextBlock Text="{Binding Asset.Symbol}"
+                       Style="{StaticResource detailsValue}"
+                       Grid.Column="1"/>
+        </Grid>
+
+        <Grid Grid.Row="8">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Rank by supply:"
+               Style="{StaticResource detailsHeader}"
+               Grid.Column="0"/>
+
+            <TextBlock Text="{Binding Asset.Rank}"
+               Style="{StaticResource detailsValue}"
+               Grid.Column="1"/>
+        </Grid>
+
+        <Grid Grid.Row="9">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="More info:"
+               Style="{StaticResource detailsHeader}"
+               Grid.Column="0"/>
+
+            <TextBlock Style="{StaticResource detailsValue}"
+               Grid.Column="1"
+               x:Name="hyperlink"
+                       FontStyle="Italic">
+                <Hyperlink Command="{Binding NavigateToUrlCommand }"
+                           CommandParameter="{Binding Asset.Explorer}">
+                    Click here!
+                </Hyperlink>
+            </TextBlock>
+        </Grid>
+        <StackPanel Grid.Row="10"
+                    Orientation="Horizontal"
+                    FlowDirection="RightToLeft">
+            <Button Style="{StaticResource navigationButton}"
+                    Tag = "{StaticResource color4}"
+                    Command="{Binding ShowCheapestPricesViewCommand}"
+                    Width="220">
+                <StackPanel Orientation="Horizontal">
+                    <fa:IconImage Icon="AngleLeft" Style="{StaticResource navigationButtonIcon}"/>
+                    <TextBlock Style="{StaticResource navigationButtonText}"
+                    Text="Cheapest prices"/>
+                </StackPanel>
+            </Button>
+
+            <Button Style="{StaticResource navigationButton}"
+                    Tag = "{StaticResource color4}"
+                    Command="{Binding ShowPriceHistoryViewCommand}"
+                    Width="220"
+                    Margin="20,0,0,0">
+                <StackPanel Orientation="Horizontal">
+                    <fa:IconImage Icon="AngleLeft" Style="{StaticResource navigationButtonIcon}"/>
+                    <TextBlock Style="{StaticResource navigationButtonText}"
+                               Text="Price history"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
     </Grid>
 </UserControl>

@@ -31,6 +31,12 @@
         <DataTemplate DataType="{x:Type viewModel:DetailsViewModel}">
             <local:DetailsView/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:CheapestPricesViewModel}">
+            <local:CheapestPricesView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:PriceHistoryViewModel}">
+            <local:PriceHistoryView/>
+        </DataTemplate>
     </Window.Resources>
     
     <Border Background="{DynamicResource primaryBackGradient}"
@@ -149,8 +155,8 @@
 
                 <Grid Grid.Row="1">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
                     <StackPanel Grid.Column="0"

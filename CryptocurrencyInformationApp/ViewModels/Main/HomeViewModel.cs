@@ -112,8 +112,8 @@ namespace CryptocurrencyInformationApp.ViewModels.Main
         private async void ExecuteShowDetailsViewCommand(object obj)
         {
             MainViewModel mainViewModel = _serviceProvider.GetRequiredService<MainViewModel>();
-            await _detailsViewModel.LoadSelectedAsset(SelectedAsset.Id);
-            mainViewModel.Caption += $"Home/Details/{SelectedAsset.Id}";
+            await _detailsViewModel.LoadSelectedAssetAsync(SelectedAsset.Id);
+            mainViewModel.Caption = $"home/details/{SelectedAsset.Id}";
             mainViewModel.CurrentChild = _detailsViewModel;    
         }
 

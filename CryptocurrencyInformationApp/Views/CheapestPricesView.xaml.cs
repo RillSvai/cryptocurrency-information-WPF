@@ -16,19 +16,13 @@ using System.Windows.Shapes;
 namespace CryptocurrencyInformationApp.Views
 {
     /// <summary>
-    /// Interaction logic for DetailsView.xaml
+    /// Interaction logic for CheapestPricesView.xaml
     /// </summary>
-    public partial class DetailsView : UserControl
+    public partial class CheapestPricesView : UserControl
     {
-        public DetailsView()
+        public CheapestPricesView()
         {
             InitializeComponent();
         }
-
-        private void assetInfoLink_RequestNavigate(object sender, RequestNavigateEventArgs e)
-        {
-            MessageBox.Show("");
-        }
-
     }
 }
