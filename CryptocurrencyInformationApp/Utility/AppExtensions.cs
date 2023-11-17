@@ -27,10 +27,10 @@ namespace CryptocurrencyInformationApp.Utility
                 }
                 string? assets = await assetsResponse.Content.ReadAsStringAsync();
                 string? exchangers = await exchangersResponse.Content.ReadAsStringAsync();
-                CoinCapResponse<Asset> assetsCoinCapResponse = new();
-                CoinCapResponse<Exchanger> exchangersCoinCapResponse = new();
-                assetsCoinCapResponse = JsonConvert.DeserializeObject<CoinCapResponse<Asset>>(assets)!;
-                exchangersCoinCapResponse = JsonConvert.DeserializeObject<CoinCapResponse<Exchanger>>(exchangers)!;
+                CoinCapResponse<List<Asset>> assetsCoinCapResponse = new();
+                CoinCapResponse<List<Exchanger>> exchangersCoinCapResponse = new();
+                assetsCoinCapResponse = JsonConvert.DeserializeObject<CoinCapResponse<List<Asset>>>(assets)!;
+                exchangersCoinCapResponse = JsonConvert.DeserializeObject<CoinCapResponse<List<Exchanger>>>(exchangers)!;
                 Storage.Assets = assetsCoinCapResponse.Data!;
                 Storage.Exchangers = exchangersCoinCapResponse.Data!;
             }

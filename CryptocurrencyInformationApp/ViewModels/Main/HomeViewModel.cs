@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Documents;
 using System.Windows.Forms;
 using System.Windows.Input;
@@ -108,10 +109,10 @@ namespace CryptocurrencyInformationApp.ViewModels.Main
             ShowDetailsViewCommand = new ViewModelCommand(ExecuteShowDetailsViewCommand);
         }
 
-        private void ExecuteShowDetailsViewCommand(object obj)
+        private async void ExecuteShowDetailsViewCommand(object obj)
         {
             MainViewModel mainViewModel = _serviceProvider.GetRequiredService<MainViewModel>();
-            _detailsViewModel.AssetId = SelectedAsset.Id;
+            await _detailsViewModel.LoadSelectedAsset(SelectedAsset.Id);
             mainViewModel.Caption += $"Home/Details/{SelectedAsset.Id}";
             mainViewModel.CurrentChild = _detailsViewModel;    
         }
