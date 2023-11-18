@@ -20,7 +20,7 @@ namespace CryptocurrencyInformationApp.Models
         }
         public override string ToString()
         {
-            return $"At {ActionDate} | About asset with id: {AssetId}";
+            return $"At {ActionDate} | Details opened about asset with id:{AssetId}";
         }
     }
 }

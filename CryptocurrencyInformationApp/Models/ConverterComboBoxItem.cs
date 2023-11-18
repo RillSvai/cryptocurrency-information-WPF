@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace CryptocurrencyInformationApp.Models
 {
-    public class ComboBoxItem
+    public class ConverterComboBoxItem
     {
         public required string DisplayValue { get; set; }
-        public required string Value { get; set; }
+        public decimal Value { get; set; }
     }
 }

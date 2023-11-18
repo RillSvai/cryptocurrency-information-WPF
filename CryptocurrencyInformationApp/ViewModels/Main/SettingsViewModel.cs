@@ -5,12 +5,12 @@ namespace CryptocurrencyInformationApp.ViewModels.Main
 {
     public class SettingsViewModel : ViewModelBase
     {
-        private ComboBoxItem[] _themeOptions;
-        private ComboBoxItem[] _fontOptions;
+        private SettingsComboBoxItem[] _themeOptions;
+        private SettingsComboBoxItem[] _fontOptions;
         private string _selectedTheme;
         private string _selectedFont;
-        public ComboBoxItem[] ThemeOptions => _themeOptions;
-        public ComboBoxItem[] FontOptions => _fontOptions;
+        public SettingsComboBoxItem[] ThemeOptions => _themeOptions;
+        public SettingsComboBoxItem[] FontOptions => _fontOptions;
         public string SelectedTheme 
         {
             get => _selectedTheme;
@@ -33,16 +33,16 @@ namespace CryptocurrencyInformationApp.ViewModels.Main
         }
         public SettingsViewModel()
         {
-            _themeOptions = new ComboBoxItem[]
+            _themeOptions = new SettingsComboBoxItem[]
             {
-                new ComboBoxItem() {Value = "/Styles/BlueTheme.xaml", DisplayValue = "Blue theme"},
-                new ComboBoxItem() {Value = "/Styles/RedTheme.xaml", DisplayValue = "Red theme"},
+                new SettingsComboBoxItem() {Value = "/Styles/BlueTheme.xaml", DisplayValue = "Blue theme"},
+                new SettingsComboBoxItem() {Value = "/Styles/RedTheme.xaml", DisplayValue = "Red theme"},
             };
-            _fontOptions = new ComboBoxItem[]
+            _fontOptions = new SettingsComboBoxItem[]
             {
-                new ComboBoxItem() {Value = "/Styles/FunFonts.xaml", DisplayValue = "Fun fonts"},
-                new ComboBoxItem() {Value = "/Styles/CoolFonts.xaml", DisplayValue = "Cool fonts"},
-                new ComboBoxItem() {Value = "/Styles/GothicFonts.xaml", DisplayValue = "Gothic fonts"},
+                new SettingsComboBoxItem() {Value = "/Styles/FunFonts.xaml", DisplayValue = "Fun fonts"},
+                new SettingsComboBoxItem() {Value = "/Styles/CoolFonts.xaml", DisplayValue = "Cool fonts"},
+                new SettingsComboBoxItem() {Value = "/Styles/GothicFonts.xaml", DisplayValue = "Gothic fonts"},
             };
             SelectedTheme = _themeOptions[1].Value;
             SelectedFont = _fontOptions[1].Value;
