@@ -3,6 +3,7 @@ using CryptocurrencyInformationApp.Utility;
 using LiveChartsCore.Defaults;
 using LiveChartsCore.SkiaSharpView;
 using LiveChartsCore.SkiaSharpView.Painting;
+using LiveChartsCore.SkiaSharpView.VisualElements;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using SkiaSharp;
@@ -77,22 +78,31 @@ namespace CryptocurrencyInformationApp.ViewModels.Main
                 OnPropertyChanged(nameof(SeriesH1));
             }
         }
-        public Axis[] DayXAxes { get; set; } =
+        public Axis[] DayXAxes { get; } =
         {
             new DateTimeAxis(TimeSpan.FromDays(1), date => date.ToString("dd.MM"))
             {
-                Name = "Days",
+                Name = "Days (UTC +0)",
                 NamePaint = new SolidColorPaint(SKColors.White),
                 LabelsPaint = new SolidColorPaint(SKColors.White),
             }
         };
-        public Axis[] YAxes { get; set; } =
+        public Axis[] YAxes { get; } =
         {
             new Axis
             {
                 Name = "Price",
                 NamePaint = new SolidColorPaint(SKColors.White),
                 LabelsPaint = new SolidColorPaint (SKColors.White),
+            }
+        };
+        public Axis[] HourXAxes { get; } =
+        {
+            new DateTimeAxis(TimeSpan.FromHours(1), date => date.ToString("HH:00"))
+            {
+                Name = "Hours (UTC +0) ",
+                NamePaint = new SolidColorPaint(SKColors.White),
+                LabelsPaint = new SolidColorPaint(SKColors.White),
             }
         };
         public ICommand BackCommand { get; }
@@ -107,7 +117,7 @@ namespace CryptocurrencyInformationApp.ViewModels.Main
             BackToHomeCommand = new ViewModelCommand(ExecuteBackToHomeCommand);
             _priceRecordsD1Options = new string[] {"Last 7 days", "Last 14 days", "Last 21 days", "Last 30 days"};
             _priceRecordsH1Options = new string[] { "Last 6 hours", "Last 12 hours", "Last 18 hours", "Last 24 hours" };
-            SelectedPriceRecordD1Option = 3;
+            SelectedPriceRecordD1Option = 1;
             SelectedPriceRecordH1Option = 1;
         }
 
@@ -134,7 +144,8 @@ namespace CryptocurrencyInformationApp.ViewModels.Main
                 {
                     Values = _priceRecordsD1
                     .Take(count)
-                    .Select(pr => new DateTimePoint(pr.Date.UtcDateTime, (double)pr.Price))
+                    .Select(pr => new DateTimePoint(pr.Date.UtcDateTime, (double)pr.Price)),
+                    
                 }
             };
         }

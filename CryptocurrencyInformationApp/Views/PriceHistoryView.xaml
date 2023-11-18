@@ -57,11 +57,12 @@
                       FontSize="16">
             </ComboBox>
             <lvc:CartesianChart Grid.Column="1"
-                                Series="{Binding SeriesD1, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                Series="{Binding SeriesD1}"
                                 YAxes="{Binding YAxes}"
                                 XAxes="{Binding DayXAxes}"
                                 x:Name="dayHistory"
-                                TooltipPosition="Top"/>
+                                TooltipPosition="Auto">
+            </lvc:CartesianChart>
 
         </Grid>
         <Grid Grid.Row="3">
@@ -80,6 +81,13 @@
                       ItemsSource="{Binding PriceRecordsH1Options, Mode=OneTime}"
                       FontSize="16">
             </ComboBox>
+            <lvc:CartesianChart Grid.Column="1"
+                    Series="{Binding SeriesH1}"
+                    YAxes="{Binding YAxes}"
+                    XAxes="{Binding HourXAxes}"
+                    x:Name="hourHistory"
+                    TooltipPosition="Auto">
+            </lvc:CartesianChart>
         </Grid>
     </Grid>
 </UserControl>
