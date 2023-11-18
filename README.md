@@ -1,0 +1,1 @@
+Multipage app with current data about cryptocurrency (using coin.cap.io). Used are MVVM and DI. Implemented price history (charts), where buy for the cheapest prices, general info, converter (commission ignored) and so on.
