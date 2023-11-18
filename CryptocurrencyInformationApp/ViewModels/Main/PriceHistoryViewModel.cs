@@ -97,15 +97,6 @@ namespace CryptocurrencyInformationApp.ViewModels.Main
         };
         public ICommand BackCommand { get; }
         public ICommand BackToHomeCommand { get; }
-        public SolidColorPaint TooltipTextPaint { get; set; } =
-        new SolidColorPaint
-        {
-            Color = new SKColor(242, 244, 195),
-            SKTypeface = SKTypeface.FromFamilyName("Courier New")
-        };
-
-        public SolidColorPaint TooltipBackgroundPaint { get; set; } =
-            new SolidColorPaint(new SKColor(72, 0, 50));
         public PriceHistoryViewModel(IHttpClientFactory httpClientFactory, IServiceProvider serviceProvider)
         {
             _httpClientFactory = httpClientFactory;

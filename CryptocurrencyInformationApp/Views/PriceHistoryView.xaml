@@ -58,14 +58,10 @@
             </ComboBox>
             <lvc:CartesianChart Grid.Column="1"
                                 Series="{Binding SeriesD1, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                                XAxes="{Binding DayXAxes}"
                                 YAxes="{Binding YAxes}"
+                                XAxes="{Binding DayXAxes}"
                                 x:Name="dayHistory"
-                                TooltipPosition="Left"
-                                TooltipBackgroundPaint="{Binding TooltipBackgroundPaint}"
-                                TooltipTextPaint="{Binding TooltipTextPaint}"
-                                TooltipTextSize="16"
-                                ToolTip="Help"/>
+                                TooltipPosition="Top"/>
 
         </Grid>
         <Grid Grid.Row="3">
