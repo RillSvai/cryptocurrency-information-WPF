@@ -1,4 +1,5 @@
 ﻿using CryptocurrencyInformationApp.Models;
+using CryptocurrencyInformationApp.Utility;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using System;
@@ -50,14 +51,17 @@ namespace CryptocurrencyInformationApp.ViewModels.Main
         {
             MainViewModel mainViewModel = _serviceProvider.GetRequiredService<MainViewModel>();
             mainViewModel.Caption = $"home/details/price-history/{Asset.Id}";
+            _priceHistoryViewModel.AssetId = Asset.Id;
             await _priceHistoryViewModel.LoadPriceHistory(Asset.Id);
             mainViewModel.CurrentChild = _priceHistoryViewModel;
         }
 
-        private void ExecuteShowCheapestPricesViewCommand(object obj)
+        private async void ExecuteShowCheapestPricesViewCommand(object obj)
         {
             MainViewModel mainViewModel = _serviceProvider.GetRequiredService<MainViewModel>();
+            _cheapestPricesViewModel.AssetId = Asset.Id;
             mainViewModel.Caption = $"home/details/cheapest-prices/{Asset.Id}";
+            await _cheapestPricesViewModel.LoadCheapestExchangers(Asset.Id);
             mainViewModel.CurrentChild = _cheapestPricesViewModel;
         }
 
@@ -73,30 +77,7 @@ namespace CryptocurrencyInformationApp.ViewModels.Main
             {
                 throw new ArgumentException("Expected argument of type: string");
             }
-            try
-            {
-                Process.Start(url!);
-            }
-            catch
-            {
-                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-                {
-                    url = url!.Replace("&", "^&");
-                    Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });
-                }
-                else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-                {
-                    Process.Start("xdg-open", url!);
-                }
-                else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-                {
-                    Process.Start("open", url!);
-                }
-                else
-                {
-                    throw new Exception("Something went wrong with navigation!");
-                }
-            }
+            url.OpenUrl();
         }
 
         public async Task LoadSelectedAssetAsync(string assetId) 

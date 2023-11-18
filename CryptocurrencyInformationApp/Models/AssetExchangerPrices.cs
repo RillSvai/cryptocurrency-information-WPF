@@ -13,6 +13,6 @@ namespace CryptocurrencyInformationApp.Models
         public string ExchangerId { get; set; }
 
         [JsonProperty("priceUsd")]
-        public string PriceUsd { get; set; }
+        public decimal PriceUsd { get; set; }
     }
 }

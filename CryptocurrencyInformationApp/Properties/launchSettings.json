@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "CryptocurrencyInformationApp": {
+      "commandName": "Project",
+      "workingDirectory": "C:\\Kiril\\C#\\WPF\\CryptocurrencyInformation\\CryptocurrencyInformationApp"
+    }
+  }
+}

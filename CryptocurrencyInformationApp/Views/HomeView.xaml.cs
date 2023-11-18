@@ -1,4 +1,5 @@
 ﻿using CryptocurrencyInformationApp.Models;
+using CryptocurrencyInformationApp.Utility;
 using CryptocurrencyInformationApp.ViewModels.Main;
 using System;
 using System.Diagnostics;
@@ -27,30 +28,7 @@ namespace CryptocurrencyInformationApp.Views
                 throw new ArgumentException("Expected another type of argument!");
             }
             string? url = (textBlock.DataContext as DataGridAsset)!.Explorer;
-            try
-            {
-                Process.Start(url!);
-            }
-            catch
-            {
-                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-                {
-                    url = url!.Replace("&", "^&");
-                    Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });
-                }
-                else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-                {
-                    Process.Start("xdg-open", url!);
-                }
-                else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-                {
-                    Process.Start("open", url!);
-                }
-                else
-                {
-                    throw new Exception("Something went wrong with navigation!");
-                }
-            }
+            url?.OpenUrl();
         }
     }
 }

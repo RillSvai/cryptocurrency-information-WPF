@@ -66,6 +66,7 @@ namespace CryptocurrencyInformationApp.ViewModels.Main
         {
             Icon = IconChar.Book;
             Caption = "history";
+            _historyViewModel.LoadHistory();
             CurrentChild = _historyViewModel;
         }
 

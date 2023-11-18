@@ -10,6 +10,77 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal">
+            <Button Style="{StaticResource navigationButton}"
+                    Tag = "{StaticResource color4}"
+                    Command="{Binding BackToHomeCommand}"
+                    Margin="0,0,10,0"
+                    Width="90">
+                <StackPanel Orientation="Horizontal">
+                    <fa:IconImage Icon="AngleDoubleLeft" Style="{StaticResource navigationButtonIcon}"/>
+                    <TextBlock Style="{StaticResource navigationButtonText}"
+                               Text="Home"/>
+                </StackPanel>
+            </Button>
             
+            <Button Style="{StaticResource navigationButton}"
+                    Tag="{StaticResource color4}"
+                    Width="90"
+                    Command="{Binding BackCommand}">
+                <StackPanel Orientation="Horizontal">
+                    <fa:IconImage Icon="AngleLeft" Style="{StaticResource navigationButtonIcon}"/>
+                    <TextBlock Style="{StaticResource navigationButtonText}"
+                               Text="Back"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    Grid.Row="1">
+            <fa:IconImage Icon="Tag"
+                          Width="24"
+                          Height="24"
+                          Margin="0,0,8,0"
+                          Foreground="{StaticResource color4}"/>
+            <TextBlock Grid.Row="1"
+                       Text="Top 10"
+                       FontSize="24"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontFamily="{StaticResource titleFont}"
+                       FontStyle="Italic"
+                       Foreground="{StaticResource titleColor3}"/>
+        </StackPanel>
+       
+        <DataGrid Grid.Row="2"
+                  Style="{DynamicResource MaterialDesignDataGrid}"
+                  Background="{DynamicResource secondaryBackGradient}"
+                  IsReadOnly="True"
+                  CanUserResizeColumns="True"
+                  CanUserResizeRows="True"
+                  AutoGenerateColumns="False"
+                  ItemsSource="{Binding AssetExchangerPrices, Mode=OneTime}"
+                  Margin="0,10,0,0">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Rank" Width="100" Binding="{Binding Rank}"/>
+                <DataGridTextColumn Header="Name" Width="*" Binding="{Binding ExchangerName}"/>
+                <DataGridTextColumn Header="Price" Width="*" Binding="{Binding PriceUsd, StringFormat={}{0:C6}}"/>
+                <DataGridHyperlinkColumn Header="Buy here!" Width="*" 
+                             Binding="{Binding ExchangerUrl}">
+                    <DataGridHyperlinkColumn.ElementStyle>
+                        <Style>
+                            <EventSetter Event="Hyperlink.Click" Handler="exchangerUrl_Click"/>
+                        </Style>
+                    </DataGridHyperlinkColumn.ElementStyle>
+                </DataGridHyperlinkColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </UserControl>

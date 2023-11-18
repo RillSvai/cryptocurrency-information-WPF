@@ -4,9 +4,64 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CryptocurrencyInformationApp.Views"
+             xmlns:viewModel="clr-namespace:CryptocurrencyInformationApp.ViewModels.Main"
+             xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
+             d:DataContext="{d:DesignInstance Type=viewModel:SettingsViewModel, IsDesignTimeCreatable=False}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-            
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <fa:IconImage Icon="PaintRoller"
+                              Width="35" 
+                              Margin="5,0,0,0"
+                              Foreground="{StaticResource color4}"/>
+            </StackPanel>
+            <ComboBox Style="{DynamicResource MaterialDesignComboBox}"
+                      Background="{DynamicResource panelOverColor}"
+                      Margin="40,10,40,0"
+                      FontFamily="{DynamicResource plainTextFont}"
+                      Foreground="{StaticResource plainTextColor2}"
+                      ItemsSource="{Binding ThemeOptions, Mode=OneTime}"
+                      SelectedValue="{Binding SelectedTheme}"
+                      SelectedValuePath="Value"
+                      FontSize="14"
+                      Padding="4,6,4,6">
+                <ComboBox.ItemTemplate>
+                    <ItemContainerTemplate>
+                        <Label Content="{Binding DisplayValue}"/>
+                    </ItemContainerTemplate>
+                </ComboBox.ItemTemplate>
+                
+            </ComboBox>
+        </StackPanel>
+        <StackPanel Grid.Column="1">
+            <StackPanel Orientation="Horizontal">
+                <fa:IconImage Icon="Font"
+                              Width="35"
+                              Margin="5,0,0,0"
+                              Foreground="{StaticResource color4}"/>
+            </StackPanel>
+            <ComboBox Style="{DynamicResource MaterialDesignComboBox}"
+                      Background="{DynamicResource panelOverColor}"
+                      Margin="40,10,40,0"
+                      FontFamily="{DynamicResource plainTextFont}"
+                      Foreground="{StaticResource plainTextColor2}"
+                      Padding="4,6,4,6"
+                      ItemsSource="{Binding FontOptions, Mode=OneTime}"
+                      SelectedValue="{Binding SelectedFont}"
+                      SelectedValuePath="Value"
+                      FontSize="14">
+                <ComboBox.ItemTemplate>
+                    <ItemContainerTemplate>
+                        <Label Content="{Binding DisplayValue}"/>
+                    </ItemContainerTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </StackPanel>
     </Grid>
 </UserControl>

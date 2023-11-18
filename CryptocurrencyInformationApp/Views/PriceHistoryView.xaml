@@ -21,22 +21,22 @@
             <Button Style="{StaticResource navigationButton}"
                     Tag = "{StaticResource color4}"
                     Command="{Binding BackToHomeCommand}"
-                    Margin="0,0,10,0">
+                    Margin="0,0,10,0"
+                    Width="90">
                 <StackPanel Orientation="Horizontal">
                     <fa:IconImage Icon="AngleDoubleLeft" Style="{StaticResource navigationButtonIcon}"/>
                     <TextBlock Style="{StaticResource navigationButtonText}"
-                   Text="Home"
-                   Width="60"/>
+                   Text="Home"/>
                 </StackPanel>
             </Button>
             <Button Style="{StaticResource navigationButton}"
                     Tag = "{StaticResource color4}"
-                    Command="{Binding BackCommand}">
+                    Command="{Binding BackCommand}"
+                    Width="90">
                 <StackPanel Orientation="Horizontal">
                     <fa:IconImage Icon="AngleLeft" Style="{StaticResource navigationButtonIcon}"/>
                     <TextBlock Style="{StaticResource navigationButtonText}"
-                   Text="Back"
-                   Width="60"/>
+                   Text="Back"/>
                 </StackPanel>
             </Button>
         </StackPanel>

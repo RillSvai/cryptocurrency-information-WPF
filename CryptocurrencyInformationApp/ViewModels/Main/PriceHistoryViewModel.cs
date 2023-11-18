@@ -29,6 +29,7 @@ namespace CryptocurrencyInformationApp.ViewModels.Main
         private int _selectedPriceRecordH1Option;
         private LineSeries<DateTimePoint>[] _seriesD1;
         private LineSeries<DateTimePoint>[] _seriesH1;
+        public string AssetId { get; set; }
 
         public string[] PriceRecordsD1Options 
         {
@@ -131,6 +132,7 @@ namespace CryptocurrencyInformationApp.ViewModels.Main
         {
             MainViewModel mainViewModel = _serviceProvider.GetRequiredService<MainViewModel>();
             DetailsViewModel detailsViewModel = _serviceProvider.GetRequiredService<DetailsViewModel>();
+            mainViewModel.Caption = $"home/details/{AssetId}";
             mainViewModel.CurrentChild = detailsViewModel;
         }
 

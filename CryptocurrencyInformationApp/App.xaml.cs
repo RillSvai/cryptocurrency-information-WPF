@@ -39,7 +39,8 @@ namespace CryptocurrencyInformationApp
                         httpClient.BaseAddress = new Uri("https://api.coincap.io/v2/");
                     });
                     //Custom services
-                    services.AddSingleton<INumberValidator, NumberValidator>();
+                    services.AddTransient<INumberValidator, NumberValidator>();
+                    services.AddTransient<IXmlHelper, XmlHelper>();
                 }).Build();
         }
         protected override async void OnStartup(StartupEventArgs e)

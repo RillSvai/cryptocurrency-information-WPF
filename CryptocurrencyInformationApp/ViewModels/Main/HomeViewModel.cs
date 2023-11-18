@@ -29,6 +29,7 @@ namespace CryptocurrencyInformationApp.ViewModels.Main
         private DataGridAsset _selectedAsset;
         private readonly DetailsViewModel _detailsViewModel;
         private readonly IServiceProvider _serviceProvider;
+        private readonly IXmlHelper _xmlHelper;
         public string RowsLimit
         {
             get => _rowsLimit;
@@ -95,7 +96,8 @@ namespace CryptocurrencyInformationApp.ViewModels.Main
         }
         public ICommand ShowDetailsViewCommand { get; }
         public HomeViewModel(INumberValidator numberValidator, IMapper mapper,
-            DetailsViewModel detailsViewModel, IServiceProvider serviceProvider)
+            DetailsViewModel detailsViewModel, IServiceProvider serviceProvider,
+            IXmlHelper xmlHelper)
         {
             _mapper = mapper;
             _numberValidator = numberValidator;
@@ -107,6 +109,7 @@ namespace CryptocurrencyInformationApp.ViewModels.Main
             RowsLimit = _assets.Count.ToString();
             RowsCount = _assets.Count;
             ShowDetailsViewCommand = new ViewModelCommand(ExecuteShowDetailsViewCommand);
+            _xmlHelper = xmlHelper;
         }
 
         private async void ExecuteShowDetailsViewCommand(object obj)
@@ -114,7 +117,9 @@ namespace CryptocurrencyInformationApp.ViewModels.Main
             MainViewModel mainViewModel = _serviceProvider.GetRequiredService<MainViewModel>();
             await _detailsViewModel.LoadSelectedAssetAsync(SelectedAsset.Id);
             mainViewModel.Caption = $"home/details/{SelectedAsset.Id}";
-            mainViewModel.CurrentChild = _detailsViewModel;    
+            mainViewModel.CurrentChild = _detailsViewModel;
+            _xmlHelper.AddElement(new HistoryRecord { ActionDate = DateTimeOffset.UtcNow, AssetId = SelectedAsset.Id }, "Data/History.xml");
+            
         }
 
         private bool IsRowsLimitChangeAllowed(string value)

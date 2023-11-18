@@ -3,10 +3,36 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:viewModel="clr-namespace:CryptocurrencyInformationApp.ViewModels.Main"
+             d:DataContext="{d:DesignInstance Type=viewModel:HistoryViewModel, IsDesignTimeCreatable=False}"
              xmlns:local="clr-namespace:CryptocurrencyInformationApp.Views"
+             xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal">
+            <Button Style="{StaticResource controlButton}"
+                    Tag="{StaticResource color4}"
+                    Height="35"
+                    Width="40"
+                    Command="{Binding ClearHistory}">
+                <fa:IconImage Icon="TrashCan"
+                              Style="{StaticResource controlButtonIcon}"
+                              Width="24"
+                              Height="24"/>
+            </Button>
+        </StackPanel>
+        <ListBox Style="{DynamicResource MaterialDesignChoiceChipAccentOutlineListBox}"
+                  Grid.Row="1"
+                  ItemsSource="{Binding Records, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                  Margin="0,12,0,0"
+                  FontSize="14"
+                  HorizontalAlignment="Center">
             
+        </ListBox>
     </Grid>
 </UserControl>
