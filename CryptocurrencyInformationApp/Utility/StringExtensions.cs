@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -25,6 +27,15 @@ namespace CryptocurrencyInformationApp.Utility
                 str.ToUpper();
             }
             return str.Substring(0, 1).ToUpper() + str.Substring(1);
+        }
+        public static int? GetFirstNumber(this string str)
+        {
+            bool isContainNumber = int.TryParse(Regex.Match(str, @"[1-9][0-9]*").ToString(), out int res);
+            if (isContainNumber) 
+            {
+                return res;
+            }
+            return null;
         }
     }
 }

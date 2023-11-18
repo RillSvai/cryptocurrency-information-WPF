@@ -46,11 +46,11 @@ namespace CryptocurrencyInformationApp.ViewModels.Main
             ShowPriceHistoryViewCommand = new ViewModelCommand(ExecuteShowPriceHistoryViewCommand);
         }
 
-        private void ExecuteShowPriceHistoryViewCommand(object obj)
+        private async void ExecuteShowPriceHistoryViewCommand(object obj)
         {
             MainViewModel mainViewModel = _serviceProvider.GetRequiredService<MainViewModel>();
             mainViewModel.Caption = $"home/details/price-history/{Asset.Id}";
-
+            await _priceHistoryViewModel.LoadPriceHistory(Asset.Id);
             mainViewModel.CurrentChild = _priceHistoryViewModel;
         }
 

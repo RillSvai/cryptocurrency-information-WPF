@@ -7,9 +7,83 @@
              xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
              xmlns:viewModel="clr-namespace:CryptocurrencyInformationApp.ViewModels.Main"
              d:DataContext="{d:DesignInstance Type=viewModel:PriceHistoryViewModel, IsDesignTimeCreatable=False}"
+             xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-            
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="8"/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal">
+            <Button Style="{StaticResource navigationButton}"
+                    Tag = "{StaticResource color4}"
+                    Command="{Binding BackToHomeCommand}"
+                    Margin="0,0,10,0">
+                <StackPanel Orientation="Horizontal">
+                    <fa:IconImage Icon="AngleDoubleLeft" Style="{StaticResource navigationButtonIcon}"/>
+                    <TextBlock Style="{StaticResource navigationButtonText}"
+                   Text="Home"
+                   Width="60"/>
+                </StackPanel>
+            </Button>
+            <Button Style="{StaticResource navigationButton}"
+                    Tag = "{StaticResource color4}"
+                    Command="{Binding BackCommand}">
+                <StackPanel Orientation="Horizontal">
+                    <fa:IconImage Icon="AngleLeft" Style="{StaticResource navigationButtonIcon}"/>
+                    <TextBlock Style="{StaticResource navigationButtonText}"
+                   Text="Back"
+                   Width="60"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <ComboBox VerticalAlignment="Top"
+                      Style="{DynamicResource MaterialDesignOutlinedComboBox}"
+                      Height="30"
+                      Padding="15,0,0,0"
+                      Foreground="{StaticResource titleColor1}"
+                      FontFamily="{DynamicResource titleFont}"
+                      Background="{DynamicResource panelOverColor}"
+                      SelectedIndex="{Binding SelectedPriceRecordD1Option, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                      ItemsSource="{Binding PriceRecordsD1Options, Mode=OneTime}"
+                      FontSize="16">
+            </ComboBox>
+            <lvc:CartesianChart Grid.Column="1"
+                                Series="{Binding SeriesD1, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                XAxes="{Binding DayXAxes}"
+                                YAxes="{Binding YAxes}"
+                                x:Name="dayHistory"
+                                TooltipPosition="Left"
+                                TooltipBackgroundPaint="{Binding TooltipBackgroundPaint}"
+                                TooltipTextPaint="{Binding TooltipTextPaint}"
+                                TooltipTextSize="16"
+                                ToolTip="Help"/>
+
+        </Grid>
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <ComboBox VerticalAlignment="Top"
+                      Style="{DynamicResource MaterialDesignOutlinedComboBox}"
+                      Height="30"
+                      Padding="15,0,0,0"
+                      Foreground="{StaticResource titleColor1}"
+                      FontFamily="{DynamicResource titleFont}"
+                      Background="{DynamicResource panelOverColor}"
+                      SelectedIndex="{Binding SelectedPriceRecordH1Option, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                      ItemsSource="{Binding PriceRecordsH1Options, Mode=OneTime}"
+                      FontSize="16">
+            </ComboBox>
+        </Grid>
     </Grid>
 </UserControl>
