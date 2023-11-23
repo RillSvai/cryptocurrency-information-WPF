@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CryptocurrencyInformationApp.Models
 {
-    public class Exchanger
+    public class Exchanger : ICloneable
     {
         [JsonProperty("exchangeId")]
         public required string Id { get; set; }
@@ -23,5 +23,17 @@ namespace CryptocurrencyInformationApp.Models
 
         [JsonProperty("exchangeUrl")]
         public required string Url { get; set; }
-    }
+
+		public object Clone()
+		{
+            return new Exchanger()
+            {
+                Id = Id,
+                Name = Name,
+                Rank = Rank,
+                VolumeUsd = VolumeUsd,
+                Url = Url
+            };
+		}
+	}
 }

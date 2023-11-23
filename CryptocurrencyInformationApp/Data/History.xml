@@ -16,4 +16,8 @@
     <AssetId>bitcoin</AssetId>
     <DetailsOpened>2023-11-21T21:16:07.0971472Z</DetailsOpened>
   </HistoryRecord>
+  <HistoryRecord>
+    <AssetId>ethereum</AssetId>
+    <DetailsOpened>2023-11-23T08:25:59.5182235Z</DetailsOpened>
+  </HistoryRecord>
 </ArrayOfHistoryRecord>

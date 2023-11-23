@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CryptocurrencyInformationApp.Models
 {
-    public class Asset
+    public class Asset : ICloneable
     {
         [JsonProperty("id")]
         public required string Id { get; set; }
@@ -38,5 +38,22 @@ namespace CryptocurrencyInformationApp.Models
 
         [JsonProperty("explorer")]
         public string? Explorer { get; set; }
-    }
+
+		public object Clone()
+		{
+            return new Asset()
+            {
+                Id = Id,
+                Rank = Rank,
+                Symbol = Symbol,
+                Name = Name,
+                Supply = Supply,
+                MaxSupply = MaxSupply,
+                MarketCapUsd = MarketCapUsd,
+                VolumeUsd24Hr = VolumeUsd24Hr,
+                PriceUsd = PriceUsd,
+                Explorer = Explorer
+            };
+		}
+	}
 }
