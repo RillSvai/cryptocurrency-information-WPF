@@ -1,14 +1,8 @@
 ﻿using CryptocurrencyInformationApp.Models;
 using CryptocurrencyInformationApp.Utility;
-using CryptocurrencyInformationApp.ViewModels.Main;
 using System;
-using System.Diagnostics;
-using System.Runtime.InteropServices;
-using System.Security.Policy;
-using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Documents;
 
 namespace CryptocurrencyInformationApp.Views
 {

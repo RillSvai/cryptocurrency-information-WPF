@@ -1,6 +1,4 @@
 ﻿using FontAwesome.Sharp;
-using System;
-using System.Collections.Generic;
 using System.Windows.Input;
 
 namespace CryptocurrencyInformationApp.ViewModels.Main

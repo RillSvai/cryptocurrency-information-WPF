@@ -1,6 +1,4 @@
-﻿using AutoMapper;
-using CryptocurrencyInformationApp.Data;
-using CryptocurrencyInformationApp.Utility;
+﻿using CryptocurrencyInformationApp.Utility;
 using CryptocurrencyInformationApp.Utility.Services.Abstractions;
 using CryptocurrencyInformationApp.Utility.Services.Implementations;
 using CryptocurrencyInformationApp.ViewModels.Main;
@@ -32,6 +30,7 @@ namespace CryptocurrencyInformationApp
                     services.AddSingleton<DetailsViewModel>();
                     services.AddSingleton<PriceHistoryViewModel>();
                     services.AddSingleton<CheapestPricesViewModel>();
+                    //Automapper
                     services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
                     //API
                     services.AddHttpClient("coin-cap-api", httpClient => 

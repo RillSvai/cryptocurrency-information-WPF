@@ -3,7 +3,6 @@ using CryptocurrencyInformationApp.Utility;
 using LiveChartsCore.Defaults;
 using LiveChartsCore.SkiaSharpView;
 using LiveChartsCore.SkiaSharpView.Painting;
-using LiveChartsCore.SkiaSharpView.VisualElements;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using SkiaSharp;
@@ -13,7 +12,6 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using System.Windows.Media;
 
 namespace CryptocurrencyInformationApp.ViewModels.Main
 {

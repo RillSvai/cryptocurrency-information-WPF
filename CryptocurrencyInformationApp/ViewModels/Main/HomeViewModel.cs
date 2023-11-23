@@ -3,15 +3,10 @@ using CryptocurrencyInformationApp.Data;
 using CryptocurrencyInformationApp.Models;
 using CryptocurrencyInformationApp.Utility;
 using CryptocurrencyInformationApp.Utility.Services.Abstractions;
-using MaterialDesignColors;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Documents;
-using System.Windows.Forms;
 using System.Windows.Input;
 
 namespace CryptocurrencyInformationApp.ViewModels.Main

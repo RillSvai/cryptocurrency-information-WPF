@@ -1,14 +1,6 @@
 ﻿using CryptocurrencyInformationApp.Models;
 using CryptocurrencyInformationApp.Utility.Services.Abstractions;
-using System;
-using System.CodeDom.Compiler;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace CryptocurrencyInformationApp.ViewModels.Main

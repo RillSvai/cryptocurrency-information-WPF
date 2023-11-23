@@ -1,12 +1,7 @@
 ﻿using CryptocurrencyInformationApp.Utility.Services.Abstractions;
-using Newtonsoft.Json.Linq;
-using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Serialization;
 
 namespace CryptocurrencyInformationApp.Utility.Services.Implementations

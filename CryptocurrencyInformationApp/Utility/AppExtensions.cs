@@ -4,11 +4,7 @@ using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
-using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace CryptocurrencyInformationApp.Utility
