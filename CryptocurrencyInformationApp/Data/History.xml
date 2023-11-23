@@ -1,99 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfHistoryRecord xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <HistoryRecord>
-    <AssetId>bitcoin</AssetId>
-    <DetailsOpened>2023-11-18T15:53:34.9276194Z</DetailsOpened>
-  </HistoryRecord>
-  <HistoryRecord>
-    <AssetId>binance-coin</AssetId>
-    <DetailsOpened>2023-11-18T15:54:16.1274802Z</DetailsOpened>
-  </HistoryRecord>
-  <HistoryRecord>
-    <AssetId>chainlink</AssetId>
-    <DetailsOpened>2023-11-18T15:54:17.3893222Z</DetailsOpened>
-  </HistoryRecord>
-  <HistoryRecord>
-    <AssetId>okb</AssetId>
-    <DetailsOpened>2023-11-18T15:54:18.6401261Z</DetailsOpened>
-  </HistoryRecord>
-  <HistoryRecord>
-    <AssetId>internet-computer</AssetId>
-    <DetailsOpened>2023-11-18T15:54:20.066935Z</DetailsOpened>
-  </HistoryRecord>
-  <HistoryRecord>
-    <AssetId>internet-computer</AssetId>
-    <DetailsOpened>2023-11-18T15:54:21.4018563Z</DetailsOpened>
-  </HistoryRecord>
-  <HistoryRecord>
-    <AssetId>vechain</AssetId>
-    <DetailsOpened>2023-11-18T15:54:22.9763571Z</DetailsOpened>
-  </HistoryRecord>
-  <HistoryRecord>
-    <AssetId>binance-usd</AssetId>
-    <DetailsOpened>2023-11-18T15:54:25.0512471Z</DetailsOpened>
-  </HistoryRecord>
-  <HistoryRecord>
-    <AssetId>unus-sed-leo</AssetId>
-    <DetailsOpened>2023-11-18T15:54:26.7262669Z</DetailsOpened>
-  </HistoryRecord>
-  <HistoryRecord>
-    <AssetId>hedera-hashgraph</AssetId>
-    <DetailsOpened>2023-11-18T15:54:28.4566639Z</DetailsOpened>
-  </HistoryRecord>
-  <HistoryRecord>
-    <AssetId>stellar</AssetId>
-    <DetailsOpened>2023-11-18T15:54:29.7842611Z</DetailsOpened>
-  </HistoryRecord>
-  <HistoryRecord>
     <AssetId>solana</AssetId>
-    <DetailsOpened>2023-11-18T15:54:31.1985488Z</DetailsOpened>
-  </HistoryRecord>
-  <HistoryRecord>
-    <AssetId>chainlink</AssetId>
-    <DetailsOpened>2023-11-18T15:54:41.9360349Z</DetailsOpened>
-  </HistoryRecord>
-  <HistoryRecord>
-    <AssetId>okb</AssetId>
-    <DetailsOpened>2023-11-18T15:54:43.7380659Z</DetailsOpened>
-  </HistoryRecord>
-  <HistoryRecord>
-    <AssetId>decentraland</AssetId>
-    <DetailsOpened>2023-11-18T15:54:45.7430236Z</DetailsOpened>
-  </HistoryRecord>
-  <HistoryRecord>
-    <AssetId>ethereum-classic</AssetId>
-    <DetailsOpened>2023-11-18T15:54:47.9627943Z</DetailsOpened>
-  </HistoryRecord>
-  <HistoryRecord>
-    <AssetId>lido-dao</AssetId>
-    <DetailsOpened>2023-11-18T15:55:03.3358065Z</DetailsOpened>
+    <DetailsOpened>2023-11-21T13:55:30.3239993Z</DetailsOpened>
   </HistoryRecord>
   <HistoryRecord>
     <AssetId>ethereum</AssetId>
-    <DetailsOpened>2023-11-18T16:20:27.5130056Z</DetailsOpened>
+    <DetailsOpened>2023-11-21T13:56:17.4028411Z</DetailsOpened>
+  </HistoryRecord>
+  <HistoryRecord>
+    <AssetId>xrp</AssetId>
+    <DetailsOpened>2023-11-21T13:56:27.0710364Z</DetailsOpened>
   </HistoryRecord>
   <HistoryRecord>
     <AssetId>bitcoin</AssetId>
-    <DetailsOpened>2023-11-18T16:38:03.2906411Z</DetailsOpened>
-  </HistoryRecord>
-  <HistoryRecord>
-    <AssetId>bitcoin</AssetId>
-    <DetailsOpened>2023-11-18T16:38:39.0427336Z</DetailsOpened>
-  </HistoryRecord>
-  <HistoryRecord>
-    <AssetId>dogecoin</AssetId>
-    <DetailsOpened>2023-11-18T17:31:17.3393653Z</DetailsOpened>
-  </HistoryRecord>
-  <HistoryRecord>
-    <AssetId>usd-coin</AssetId>
-    <DetailsOpened>2023-11-18T17:31:25.7848423Z</DetailsOpened>
-  </HistoryRecord>
-  <HistoryRecord>
-    <AssetId>bitcoin</AssetId>
-    <DetailsOpened>2023-11-18T17:31:37.4597414Z</DetailsOpened>
-  </HistoryRecord>
-  <HistoryRecord>
-    <AssetId>bitcoin</AssetId>
-    <DetailsOpened>2023-11-18T17:32:43.2070599Z</DetailsOpened>
+    <DetailsOpened>2023-11-21T21:16:07.0971472Z</DetailsOpened>
   </HistoryRecord>
 </ArrayOfHistoryRecord>

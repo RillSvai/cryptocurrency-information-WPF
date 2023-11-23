@@ -1,5 +1,6 @@
 ﻿using CryptocurrencyInformationApp.Models;
 using System;
+using System.Linq;
 using System.Windows;
 namespace CryptocurrencyInformationApp.ViewModels.Main
 {
@@ -9,8 +10,12 @@ namespace CryptocurrencyInformationApp.ViewModels.Main
         private SettingsComboBoxItem[] _fontOptions;
         private string _selectedTheme;
         private string _selectedFont;
-        public SettingsComboBoxItem[] ThemeOptions => _themeOptions;
-        public SettingsComboBoxItem[] FontOptions => _fontOptions;
+        public SettingsComboBoxItem[] ThemeOptions => _themeOptions
+            .Select(item => new SettingsComboBoxItem { Value = item.Value, DisplayValue = item.DisplayValue})
+            .ToArray();
+        public SettingsComboBoxItem[] FontOptions => _fontOptions
+            .Select(item => new SettingsComboBoxItem { Value = item.Value, DisplayValue = item.DisplayValue })
+            .ToArray();
         public string SelectedTheme 
         {
             get => _selectedTheme;

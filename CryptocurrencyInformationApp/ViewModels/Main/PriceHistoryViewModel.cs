@@ -33,11 +33,11 @@ namespace CryptocurrencyInformationApp.ViewModels.Main
 
         public string[] PriceRecordsD1Options 
         {
-            get => _priceRecordsD1Options;
+            get => _priceRecordsD1Options.ToArray();
         }
         public string[] PriceRecordsH1Options 
         {
-            get => _priceRecordsH1Options;
+            get => _priceRecordsH1Options.ToArray();
         }
         public int SelectedPriceRecordD1Option 
         {

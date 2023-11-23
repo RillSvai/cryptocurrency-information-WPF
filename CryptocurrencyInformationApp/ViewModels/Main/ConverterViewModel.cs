@@ -60,7 +60,9 @@ namespace CryptocurrencyInformationApp.ViewModels.Main
         }
         public ConverterComboBoxItem[] Items 
         {
-            get => _items;
+            get => _items
+                .Select(item => new ConverterComboBoxItem { Value = item.Value, DisplayValue = item.DisplayValue})
+                .ToArray();
         }
         public ICommand ConvertCommand { get; }
         public ConverterViewModel(INumberValidator numberValidator)
