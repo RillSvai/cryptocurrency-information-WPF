@@ -20,4 +20,20 @@
     <AssetId>ethereum</AssetId>
     <DetailsOpened>2023-11-23T08:25:59.5182235Z</DetailsOpened>
   </HistoryRecord>
+  <HistoryRecord>
+    <AssetId>ethereum</AssetId>
+    <DetailsOpened>2023-11-23T08:44:19.9341546Z</DetailsOpened>
+  </HistoryRecord>
+  <HistoryRecord>
+    <AssetId>uniswap</AssetId>
+    <DetailsOpened>2023-11-23T08:44:24.8467811Z</DetailsOpened>
+  </HistoryRecord>
+  <HistoryRecord>
+    <AssetId>dogecoin</AssetId>
+    <DetailsOpened>2023-11-23T18:11:47.1005997Z</DetailsOpened>
+  </HistoryRecord>
+  <HistoryRecord>
+    <AssetId>ethereum</AssetId>
+    <DetailsOpened>2023-11-23T18:11:53.0283126Z</DetailsOpened>
+  </HistoryRecord>
 </ArrayOfHistoryRecord>

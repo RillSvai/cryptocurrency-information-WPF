@@ -61,7 +61,7 @@
                                 BorderThickness="2.5"
                                 Width="90"
                                 CornerRadius="45">
-                            <Image Source="/Assets/Icons/logo.png" 
+                            <Image Source="pack://application:,,,/Assets/Icons/logo.png" 
                                         Width="85"
                                         Name="logo"/>
                         </Border>
