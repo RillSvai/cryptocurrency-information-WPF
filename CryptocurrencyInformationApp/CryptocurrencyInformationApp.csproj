@@ -27,4 +27,10 @@
     <Resource Include="Assets\Icons\logo.png" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Data\History.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
